@@ -3,6 +3,8 @@ from utils import process_user_question
 import os
 from dotenv import load_dotenv
 
+load_dotenv()
+
 # Streamlit app title
 st.title("Database Q&A Chat")
 
