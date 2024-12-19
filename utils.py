@@ -13,10 +13,17 @@ api_key = os.getenv("OPENAI_API_KEY")
 # Initialize components
 llm = ChatOpenAI(api_key=api_key)
 
+# def initialize_db_connection(uri: str):
+#     """Initialize the SQL database connection."""
+#     return SQLDatabase.from_uri(uri)
+
 def initialize_db_connection(uri: str):
     """Initialize the SQL database connection."""
-    return SQLDatabase.from_uri(uri)
-
+    try:
+        return SQLDatabase.from_uri(uri)
+    except Exception as e:
+        raise ConnectionError(f"Failed to connect to the database: {e}")
+    
 def get_table_schema(db: SQLDatabase):
     """Retrieve the table schema from the database."""
     return db.get_table_info()

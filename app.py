@@ -26,7 +26,8 @@ if user_question := st.chat_input("Ask a question about the database:"):
     with st.chat_message("assistant"):
         st.write("Thinking...")
         response = process_user_question(
-            db_uri= os.getenv("MYSQL_URI"),
+            # db_uri= os.getenv("MYSQL_URI"),
+            db_uri=os.getenv("AZURE_SQL_URI"),
             question=user_question
         )
         st.markdown(response)
